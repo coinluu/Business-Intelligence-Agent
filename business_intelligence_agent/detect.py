@@ -11,12 +11,7 @@ from typing import Any
 
 
 def _obsidian_config_path() -> Path:
-    system = platform.system()
-    if system == "Darwin":
-        return Path.home() / "Library/Application Support/obsidian/obsidian.json"
-    if system == "Windows":
-        return Path(os.environ.get("APPDATA", Path.home() / "AppData/Roaming")) / "obsidian/obsidian.json"
-    return Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config")) / "obsidian/obsidian.json"
+    return Path.home() / "Library/Application Support/obsidian/obsidian.json"
 
 
 def discover_obsidian_vaults() -> list[str]:

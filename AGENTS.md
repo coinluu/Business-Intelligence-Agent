@@ -10,7 +10,7 @@ Convert the user's information objective into a tested local workflow that colle
 
 ### 1. Inspect before asking
 
-If `uv` is missing, run `./scripts/bootstrap.sh` on macOS/Linux or `powershell -ExecutionPolicy Bypass -File scripts/bootstrap.ps1` on Windows. Otherwise run, in order:
+First confirm the detected operating system is macOS. Non-macOS installation is unsupported and must stop. If `uv` is missing, run `./scripts/bootstrap.sh`. Otherwise run, in order:
 
 ```bash
 uv sync --frozen
@@ -70,7 +70,7 @@ uv run bia schedule install
 uv run bia schedule status
 ```
 
-Do not mark a platform as verified unless it was exercised on that operating system.
+Do not mark macOS scheduling as verified unless the generated LaunchAgent passed validation and a scheduled execution was exercised on a Mac.
 
 ## Later natural-language changes
 

@@ -6,6 +6,6 @@
 - Added minimal-question user profile and generated runtime configuration.
 - Added automatic environment and Obsidian vault detection.
 - Added protected local secret handling and atomic configuration backups.
-- Added macOS, Windows, and Linux scheduler adapters.
+- Added a validated macOS LaunchAgent scheduler.
 - Added readiness checks, live API verification, run status, and atomic Obsidian delivery.
 - Preserved the existing TrendRadar collection engine as the data acquisition core.

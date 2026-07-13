@@ -11,11 +11,7 @@ cd Business-Intelligence-Agent
 cp user-profile.example.yaml user-profile.yaml
 ```
 
-On Windows, replace the bootstrap command with:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File scripts/bootstrap.ps1
-```
+This release supports macOS only. Installation stops on other operating systems.
 
 Edit `user-profile.yaml`, then apply it:
 
@@ -41,11 +37,9 @@ uv run bia schedule status
 
 `bia run` is intentionally a real run. Depending on the selected sources and model, it can take time and consume API tokens.
 
-## Platform scheduling
+## Scheduling
 
-- macOS installs `~/Library/LaunchAgents/io.github.business-intelligence-agent.plist`.
-- Linux installs a systemd user service and timer under `~/.config/systemd/user`.
-- Windows creates the `io.github.business-intelligence-agent` Task Scheduler task.
+macOS installs `~/Library/LaunchAgents/io.github.business-intelligence-agent.plist`.
 
 The operating-system scheduler wakes every five minutes. The product reads `user-profile.yaml` and decides whether collection or a report is due, so later timing changes do not require hand-editing task definitions.
 

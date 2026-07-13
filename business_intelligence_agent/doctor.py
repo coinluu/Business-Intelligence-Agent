@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import os
+import platform
 import stat
 import subprocess
 import tempfile
@@ -24,6 +25,7 @@ def _check(results: list[dict[str, str]], ok: bool, item: str, detail: str, warn
 def run_doctor(project: Path, live_api: bool = False) -> dict[str, Any]:
     results: list[dict[str, str]] = []
     environment = detect_environment()
+    _check(results, platform.system() == "Darwin", "operating_system", platform.system() if platform.system() == "Darwin" else "unsupported; macOS required")
     _check(results, bool(environment["tools"]["uv"]), "uv", environment["tools"]["uv"] or "not found")
     _check(results, bool(environment["network"]["github_https"]), "network", "HTTPS reachable" if environment["network"]["github_https"] else "HTTPS check failed", warning=True)
 

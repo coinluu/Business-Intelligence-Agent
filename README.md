@@ -2,7 +2,7 @@
 
 An Agent-installable system that collects public business information, evaluates it with the user's model, writes structured Markdown into Obsidian, and keeps the workflow running on a schedule.
 
-This repository includes the proven TrendRadar collection engine plus a separate product layer for environment detection, minimal-question onboarding, safe configuration, cross-platform scheduling, verification, and later Agent-managed changes.
+This repository includes the proven TrendRadar collection engine plus a separate macOS product layer for environment detection, minimal-question onboarding, safe configuration, LaunchAgent scheduling, verification, and later Agent-managed changes.
 
 ## Give this repository to an Agent
 
@@ -12,7 +12,7 @@ Send the repository URL to a coding Agent and say:
 
 The Agent must read [AGENTS.md](AGENTS.md) before changing the machine.
 
-Bootstrap commands are included for machines without `uv`: `scripts/bootstrap.sh` for macOS/Linux and `scripts/bootstrap.ps1` for Windows.
+A bootstrap command is included for Macs without `uv`: `scripts/bootstrap.sh`.
 
 ## What the installer asks
 
@@ -50,11 +50,9 @@ uv run bia schedule resume
 uv run bia schedule uninstall
 ```
 
-## Supported systems
+## Supported system
 
-- macOS: LaunchAgent
-- Windows: Task Scheduler
-- Linux: systemd user timer
+- macOS 13 or later: LaunchAgent
 - Python 3.12+
 - Local Obsidian vaults already initialized by Obsidian
 
@@ -87,4 +85,4 @@ Partial source failure is reported as degraded coverage, never as full success.
 
 ## Security and provenance
 
-See [SECURITY.md](SECURITY.md) and [UPSTREAM.md](UPSTREAM.md). The underlying collection engine is derived from TrendRadar and the full repository is distributed under GPL-3.0. This product does not bypass authentication, paywalls, robots controls, or source terms.
+See [SECURITY.md](SECURITY.md) and [UPSTREAM.md](UPSTREAM.md). The underlying collection engine is derived from TrendRadar and the full repository is distributed under GPL-3.0. This product does not bypass authentication, paywalls, robots controls, or source terms. Non-macOS installation is rejected explicitly.

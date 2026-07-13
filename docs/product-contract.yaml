@@ -42,8 +42,7 @@ safety:
 
 scheduling:
   macos: launch_agent
-  windows: task_scheduler
-  linux: systemd_user_timer
+  unsupported_operating_systems: reject_installation
   wake_interval_minutes: 5
   due_logic_source: user-profile.yaml
 
