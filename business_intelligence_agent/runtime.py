@@ -33,6 +33,8 @@ def _runtime_env(project: Path, profile: dict[str, Any]) -> dict[str, str]:
     environment["FREQUENCY_WORDS_PATH"] = str(compiled["keywords"])
     environment["BIA_PROFILE_PATH"] = str(compiled["profile"])
     environment["TRENDRADAR_OPEN_BROWSER"] = "0"
+    environment["PYTHONUTF8"] = "1"
+    environment["PYTHONIOENCODING"] = "utf-8"
     return environment
 
 

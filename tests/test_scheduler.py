@@ -15,6 +15,7 @@ def test_macos_scheduler_escapes_paths(tmp_path: Path, monkeypatch):
     project.mkdir()
     monkeypatch.setattr(scheduler.platform, "system", lambda: "Darwin")
     monkeypatch.setattr(scheduler.Path, "home", lambda: home)
+    monkeypatch.setattr(scheduler.os, "getuid", lambda: 501, raising=False)
     monkeypatch.setattr(scheduler.shutil, "which", lambda name: "/usr/local/bin/uv")
     monkeypatch.setattr(scheduler, "_run", lambda *args, **kwargs: Result())
     target = Path(scheduler.install(project))

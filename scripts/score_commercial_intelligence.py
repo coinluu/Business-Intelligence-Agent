@@ -8,6 +8,7 @@ import json
 import os
 import re
 import sqlite3
+import sys
 from dataclasses import dataclass, asdict
 from datetime import datetime, timedelta
 from pathlib import Path
@@ -15,6 +16,11 @@ from pathlib import Path
 import yaml
 from json_repair import repair_json
 from trendradar.ai.client import AIClient
+
+if hasattr(sys.stdout, "reconfigure"):
+    sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+if hasattr(sys.stderr, "reconfigure"):
+    sys.stderr.reconfigure(encoding="utf-8", errors="replace")
 
 PROMPT_DIR = Path(__file__).resolve().parents[1] / "config" / "custom" / "ai"
 PROFILE_CONTEXT = ""
