@@ -1,0 +1,43 @@
+name: Bug report
+description: Report an installation, collection, report, Obsidian, or scheduling failure
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "Never include API keys, private vault contents, cookies, or customer reports."
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Agent installation
+        - Environment detection
+        - Data collection
+        - Model connection
+        - Markdown report
+        - Obsidian delivery
+        - Scheduler
+        - Update or uninstall
+    validations:
+      required: true
+  - type: input
+    id: system
+    attributes:
+      label: Operating system
+      placeholder: "macOS 14, Windows 11, Ubuntu 24.04"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior and redacted diagnostic output
+      description: Run `uv run bia doctor` and remove private paths or secrets before pasting.
+    validations:
+      required: true

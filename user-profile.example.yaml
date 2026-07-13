@@ -1,0 +1,76 @@
+schema_version: 1
+
+# The Agent changes these to true only after the user has answered or explicitly
+# accepted a proposed default. They prevent silent installation of this sample.
+onboarding:
+  information_target_confirmed: false
+  report_format_confirmed: false
+  schedule_confirmed: false
+
+profile:
+  name: "Overseas AI Business Intelligence"
+  objective: "Track material company, product, funding, regulatory, and competitive changes in overseas AI agent markets."
+  topics:
+    - "AI agents"
+    - "agent startups"
+    - "enterprise AI"
+  include_keywords:
+    - "funding"
+    - "product launch"
+    - "partnership"
+    - "regulation"
+  exclude_keywords:
+    - "celebrity gossip"
+    - "unsupported rumor"
+  regions:
+    - "United States"
+    - "Europe"
+  languages:
+    - "en"
+    - "zh-CN"
+
+sources:
+  # Empty means use the maintained built-in public hotlist sources.
+  platform_ids: []
+  # Add public RSS/Atom feeds here. Login-only sources require a separate credential setup.
+  rss_feeds:
+    - id: "techcrunch"
+      name: "TechCrunch"
+      url: "https://techcrunch.com/feed/"
+      enabled: true
+
+report:
+  language: "zh-CN"
+  title: "Overseas AI Business Intelligence"
+  sections:
+    - "executive_summary"
+    - "key_themes"
+    - "major_changes"
+    - "information_gaps"
+    - "watchlist"
+    - "high_value_intelligence"
+  custom_requirements: "Preserve company names, disclosed amounts, dates, and primary-source links. Clearly mark missing facts."
+  frontmatter:
+    enabled: true
+    tags:
+      - "business-intelligence"
+      - "ai-agents"
+  threshold: 70
+  limit: 30
+  filename: "{datetime}-overseas-ai-business-intelligence.md"
+
+delivery:
+  # The installer fills the actual path into .env.local after auto-detection or user selection.
+  obsidian_vault: "auto"
+  folder: "Business Intelligence/Overseas AI"
+
+schedule:
+  collection_every_minutes: 30
+  report_times:
+    - "08:00"
+  timezone: "system"
+  catch_up: true
+
+model:
+  model: "deepseek/deepseek-chat"
+  api_base: "https://api.deepseek.com"

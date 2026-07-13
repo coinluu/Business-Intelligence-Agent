@@ -1,0 +1,52 @@
+[GLOBAL_FILTER]
+震惊
+标题党
+娱乐八卦
+彩票
+博彩
+
+[WORD_GROUPS]
+
+[宏观经济与央行]
+/Federal Reserve|Fed\b|ECB\b|PBOC|央行|美联储|欧洲央行|利率|降息|加息|通胀|CPI\b|PPI\b|GDP\b|就业|失业率|PMI\b|汇率|美元|人民币|日元|欧元/
+@30
+
+[贸易政策与地缘风险]
+/tariff|trade war|export control|sanction|关税|贸易战|出口管制|制裁|供应链|地缘政治|中美|欧盟|俄罗斯|印度|东南亚/
+@30
+
+[资本市场与资产价格]
+/stock market|equities|bond market|Treasury|IPO\b|M&A|merger|acquisition|venture capital|private equity|股市|债券|国债|上市|并购|融资|创投|私募|黄金|原油|大宗商品/
+@30
+
+[公司战略与财报]
+/earnings|revenue|profit|guidance|restructuring|layoff|CEO\b|财报|营收|利润|业绩指引|重组|裁员|管理层|战略合作|市场份额/
+@40
+
+[人工智能与数字经济]
+/artificial intelligence|generative AI|AI agent|foundation model|OpenAI|Anthropic|Claude|ChatGPT|Gemini|DeepSeek|人工智能|生成式AI|智能体|大模型|云计算|数据中心|算力/
+@40
+
+[半导体与关键技术]
+/semiconductor|chipmaker|NVIDIA|AMD\b|TSMC|ASML|Intel\b|Qualcomm|Broadcom|半导体|芯片|英伟达|台积电|光刻机|先进封装|存储芯片/
+@30
+
+[能源与气候产业]
+/oil price|natural gas|LNG\b|renewable energy|solar|battery|nuclear power|原油|天然气|液化天然气|新能源|光伏|储能|电池|核电|碳市场/
+@30
+
+[汽车与先进制造]
+/EV\b|electric vehicle|autonomous driving|robotics|Tesla|BYD\b|电动车|新能源汽车|自动驾驶|机器人|具身智能|工业自动化|智能制造/
+@30
+
+[消费与零售]
+/consumer spending|retail sales|e-commerce|brand|luxury|消费|零售|电商|品牌|奢侈品|餐饮|旅游|房地产/
+@30
+
+[监管与公司治理]
+/SEC\b|antitrust|regulation|privacy|data protection|cybersecurity|监管|反垄断|数据合规|隐私|网络安全|公司治理|会计欺诈/
+@30
+
+[全球重点企业]
+/Apple|Microsoft|Alphabet|Google|Amazon|Meta\b|NVIDIA|Tesla|OpenAI|ByteDance|TikTok|Huawei|Tencent|Alibaba|BYD\b|苹果|微软|谷歌|亚马逊|英伟达|特斯拉|字节跳动|华为|腾讯|阿里巴巴|比亚迪/
+@40

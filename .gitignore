@@ -1,0 +1,17 @@
+.DS_Store
+.env.local
+.env
+user-profile.yaml
+runtime/
+.state/
+.backups/
+output/
+.venv/
+*.db
+*.log
+.DS_Store
+.venv/
+output/
+index.html
+__pycache__/
+*.pyc

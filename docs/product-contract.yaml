@@ -1,0 +1,58 @@
+contract_version: "1.0"
+product: Business Intelligence Agent
+
+configuration:
+  source_of_truth: user-profile.yaml
+  secrets: .env.local
+  generated_runtime: runtime/
+  required_user_inputs:
+    - information_target
+    - markdown_outcome
+    - update_schedule
+    - model_connection
+  auto_detect_before_asking:
+    - operating_system
+    - architecture
+    - dependencies
+    - network_and_proxy_hints
+    - timezone
+    - registered_obsidian_vaults
+
+pipeline:
+  ordered_steps:
+    - validate_profile
+    - collect_public_sources
+    - persist_raw_data
+    - deduplicate
+    - score_against_user_objective
+    - render_requested_report
+    - atomic_obsidian_write
+    - read_back_verification
+  failure_states:
+    complete: all_required_steps_verified
+    degraded: some_sources_failed_but_verified_report_was_created
+    failed: requested_report_or_delivery_could_not_be_verified
+
+safety:
+  secrets_never_tracked: true
+  reports_never_tracked: true
+  do_not_bypass_authentication_or_paywalls: true
+  do_not_claim_unverified_platform_support: true
+  preserve_existing_obsidian_files: true
+
+scheduling:
+  macos: launch_agent
+  windows: task_scheduler
+  linux: systemd_user_timer
+  wake_interval_minutes: 5
+  due_logic_source: user-profile.yaml
+
+acceptance:
+  - clean_dependency_install
+  - profile_validation
+  - live_model_request
+  - non_empty_source_database
+  - non_empty_markdown_in_selected_vault
+  - report_read_back_matches_written_content
+  - real_scheduled_execution
+  - secret_and_generated_data_scan

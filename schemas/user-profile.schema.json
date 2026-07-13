@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/business-intelligence-agent/user-profile.schema.json",
+  "title": "Business Intelligence Agent user profile",
+  "type": "object",
+  "required": ["schema_version", "onboarding", "profile", "report", "delivery", "schedule", "model"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "onboarding": {
+      "type": "object",
+      "required": ["information_target_confirmed", "report_format_confirmed", "schedule_confirmed"],
+      "properties": {
+        "information_target_confirmed": {"const": true},
+        "report_format_confirmed": {"const": true},
+        "schedule_confirmed": {"const": true}
+      },
+      "additionalProperties": false
+    },
+    "profile": {
+      "type": "object",
+      "required": ["objective", "topics"],
+      "properties": {
+        "name": {"type": "string"},
+        "objective": {"type": "string", "minLength": 1},
+        "topics": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "include_keywords": {"type": "array", "items": {"type": "string"}},
+        "exclude_keywords": {"type": "array", "items": {"type": "string"}},
+        "regions": {"type": "array", "items": {"type": "string"}},
+        "languages": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "sources": {
+      "type": "object",
+      "properties": {
+        "platform_ids": {"type": "array", "items": {"type": "string"}},
+        "rss_feeds": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "url"],
+            "properties": {
+              "id": {"type": "string"},
+              "name": {"type": "string"},
+              "url": {"type": "string", "format": "uri"},
+              "enabled": {"type": "boolean"},
+              "max_age_days": {"type": "integer", "minimum": 0}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "report": {
+      "type": "object",
+      "required": ["title", "sections", "filename"],
+      "properties": {
+        "language": {"type": "string"},
+        "title": {"type": "string", "minLength": 1},
+        "sections": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "custom_requirements": {"type": "string"},
+        "frontmatter": {
+          "type": "object",
+          "properties": {
+            "enabled": {"type": "boolean"},
+            "tags": {"type": "array", "items": {"type": "string"}}
+          },
+          "additionalProperties": false
+        },
+        "threshold": {"type": "integer", "minimum": 0, "maximum": 100},
+        "limit": {"type": "integer", "minimum": 1, "maximum": 100},
+        "filename": {"type": "string", "pattern": "\\.md$"}
+      },
+      "additionalProperties": false
+    },
+    "delivery": {
+      "type": "object",
+      "required": ["folder"],
+      "properties": {
+        "obsidian_vault": {"type": "string"},
+        "folder": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "schedule": {
+      "type": "object",
+      "required": ["collection_every_minutes", "report_times"],
+      "properties": {
+        "collection_every_minutes": {"type": "integer", "minimum": 5, "maximum": 1440},
+        "report_times": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"}},
+        "timezone": {"type": "string"},
+        "catch_up": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "model": {
+      "type": "object",
+      "required": ["model"],
+      "properties": {
+        "model": {"type": "string", "minLength": 1},
+        "api_base": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
