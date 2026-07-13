@@ -12,7 +12,7 @@ jobs:
   release:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Build clean source archive
         run: |
           git archive --format=zip --prefix=Business-Intelligence-Agent/ -o "business-intelligence-agent-${GITHUB_REF_NAME}.zip" HEAD
