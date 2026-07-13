@@ -4,7 +4,7 @@ version = "1.0.0"
 description = "Agent-installable business intelligence collection and Obsidian delivery"
 requires-python = ">=3.12"
 dependencies = [
-    "requests==2.33.0",
+    "requests==2.34.2",
     "pytz==2026.1",
     "PyYAML==6.0.3",
     "websockets==13.1",
